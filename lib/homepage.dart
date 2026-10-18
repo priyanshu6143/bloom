@@ -17,6 +17,7 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       //backgroundColor: Color(0xFFF9F5E6),
       appBar: AppBar(
+        actionsPadding: EdgeInsets.all(10),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,11 +37,14 @@ class _HomepageState extends State<Homepage> {
           ],
         ),
         actions: [
-          IconButton(onPressed: (){},
-              icon: const Icon(
-                  Icons.person_outline_rounded,
-                color: Color(0xFFA7B38D),
-              ),
+          CircleAvatar(
+            backgroundColor: Color(0XFFA9B390),
+            child: IconButton(onPressed: (){},
+                icon: const Icon(
+                    Icons.person,
+                  color: Color(0xFFFBF7EC),
+                ),
+            ),
           ),
         ],
       ),
@@ -334,11 +338,41 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ),
                 ],
-              ), 
+              ),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color(0xFFF8F4EA), 
+        selectedItemColor: const Color(0xFF66865A),
+        unselectedItemColor: Colors.grey,
+          selectedLabelStyle: GoogleFonts.ubuntu(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+          ),
+          unselectedLabelStyle: GoogleFonts.ubuntu(
+            fontSize: 11,
+            fontWeight: FontWeight.normal,
+          ),
+          items: const[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_filled,),
+              activeIcon: Icon(Icons.home),
+              label: "Home"
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.task_alt_outlined),
+              activeIcon: Icon(Icons.task),
+              label: "Tasks",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_outlined),
+              activeIcon: Icon(Icons.person),
+              label: "Profile",
+            ),
+          ]
+      ) ,
     );
   }
 }
