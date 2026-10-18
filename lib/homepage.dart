@@ -340,6 +340,35 @@ class _HomepageState extends State<Homepage> {
                 ],
               ),
             ),
+            Expanded(
+                child: Stack(
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(
+                          "assets/img_1.png",
+                          height: MediaQuery.of(context).size.height * 0.90,
+                          width: MediaQuery.of(context).size.width * 0.90,
+                          //width: (MediaQuery.of(context).size.width * 0.15) .clamp(20.0, 40.0),
+                        )
+                      ],
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 10,
+                        child: IconButton(onPressed: () {},
+                            icon: Icon(Icons.add),
+                          style: IconButton.styleFrom(
+                            backgroundColor: Color(0XFF728560),
+                            foregroundColor: Colors.white,
+                            fixedSize: Size(60, 60),
+                            shape: CircleBorder(),
+                          )
+                        )
+                    )
+                  ]
+                )
+            )
           ],
         ),
       ),
