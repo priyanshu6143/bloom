@@ -205,7 +205,7 @@ class _HomepageState extends State<Homepage> {
                   Checkbox(
                     value: isCompleted,
                     onChanged: (value) {
-                      setState(() {
+                            setState(() {
                         isCompleted = value ?? false;
                       });
                     },
