@@ -1,17 +1,50 @@
-# bloom_habit_tracker
+# 🌸 Bloom — Habit Tracker
 
-A new Flutter project.
+**Small Steps. Big Changes. 🌱**
 
-## Getting Started
+Bloom is a Flutter-based habit tracker designed to help users build positive habits and stay consistent with their daily goals. With a calming, nature-inspired UI, Bloom makes tracking everyday habits simple and enjoyable.
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- ✅ Track daily habits using interactive checkboxes.
+- 📊 View daily progress with a circular progress indicator.
+- 🎨 Clean and calming UI with a nature-inspired color palette.
+- 🔐 Login screen with navigation to the homepage.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 📱 Screenshots
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| Login Screen | Homepage |
+|:---:|:---:|
+| ![Login Screen](screenshots/img.png) | ![Homepage](screenshots/img_1.png)|
+
+## 🛠️ Built With
+
+- Flutter
+- Dart
+- Google Fonts
+
+## 🚀 Getting Started
+
+Clone the repository and navigate to the project folder:
+
+```bash
+git clone https://github.com/priyanshu6143/bloom.git
+cd bloom
+```
+
+Install dependencies and run the application:
+
+```bash
+flutter pub get
+flutter run
+```
+
+## 👩‍💻 Author
+
+**Priyanshu**
+
+[GitHub Profile](https://github.com/priyanshu6143)
+
+---
+
+*Grow a little every day. 🌿*
