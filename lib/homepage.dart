@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
+import 'addhabit.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -356,7 +358,9 @@ class _HomepageState extends State<Homepage> {
                     Positioned(
                       right: 0,
                       bottom: 10,
-                        child: IconButton(onPressed: () {},
+                        child: IconButton(onPressed: () {
+                          Get.to(() => const AddHabit());
+                        },
                             icon: Icon(Icons.add),
                           style: IconButton.styleFrom(
                             backgroundColor: Color(0XFF728560),
@@ -373,7 +377,7 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFFF8F4EA), 
+        backgroundColor: Color(0xFFF8F4EA),
         selectedItemColor: const Color(0xFF66865A),
         unselectedItemColor: Colors.grey,
           selectedLabelStyle: GoogleFonts.ubuntu(

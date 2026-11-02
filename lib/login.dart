@@ -10,6 +10,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final formKey = GlobalKey<FormState>();
+  //final namekey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +32,7 @@ class _LoginState extends State<Login> {
                   color: Colors.grey.shade300,
                   blurRadius: 10,
                   spreadRadius: 2,
-                  offset: Offset(0, 4),
+                  offset: Offset(0, 4),//to study
                 ),
               ],
             ),
@@ -76,7 +78,7 @@ class _LoginState extends State<Login> {
                 SizedBox(height: 5),
 
                 Text(
-                  "Let's grow together 🌿",
+                  "Let's grow together ",
                   style: GoogleFonts.ubuntu(
                     fontSize: 14,
                     color: Color(0xFF768673),
@@ -85,50 +87,79 @@ class _LoginState extends State<Login> {
 
                 SizedBox(height: 30),
 
-                TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.person_outline,
-                      color: Color(0xFF506142),
-                    ),
-                    hintText: "Your Name",
-                    filled: true,
-                    fillColor: Color(0xFFEDECDA),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Color(0xFF66865A)),
-                    ),
+                Form(
+                  key : formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        validator: (value){
+                          if(value == null || value.isEmpty){
+                            return "Enter Username";
+                          }
+                          if(!RegExp(r'^[?a-zA-Z_]{3,}$').hasMatch(value)){
+                            return "Invalid Username";
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.person_outline,
+                            color: Color(0xFF506142),
+                          ),
+                          hintText: "Your Name",
+                          filled: true,
+                          fillColor: Color(0xFFEDECDA),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide.none,
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: BorderSide(color: Color(0xFF66865A)),
+                          ),
+                        ),
+                        cursorColor: Color(0xFF66865A),
+                      ),
+                      SizedBox(height: 15),
+
+                       TextFormField(
+                          obscureText: true,
+                          validator: (value){
+                            if (value == null || value.isEmpty){
+                              return "Enter a valid Input";
+                            }
+                            if(value.length < 8){
+                              return "Password must be at least 8 characters long";
+                            }
+                            if(!RegExp(r'^[a-zA-Z0-9]{8,}$').hasMatch(value)){
+                              return "Invalid Password";
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.lock_outline,
+                              color: Color(0xFF506142),
+                            ),
+                            hintText: "Password",
+                            filled: true,
+                            fillColor: Color(0xFFEDECDA),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(color: Color(0xFF66865A)),
+                            ),
+                          ),
+                          cursorColor: Color(0xFF66865A),
+                        ),
+                    ],
                   ),
-                  cursorColor: Color(0xFF66865A),
                 ),
 
-                SizedBox(height: 15),
 
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.lock_outline,
-                      color: Color(0xFF506142),
-                    ),
-                    hintText: "Password",
-                    filled: true,
-                    fillColor: Color(0xFFEDECDA),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Color(0xFF66865A)),
-                    ),
-                  ),
-                  cursorColor: Color(0xFF66865A),
-                ),
 
                 SizedBox(height: 25),
 
@@ -137,7 +168,10 @@ class _LoginState extends State<Login> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage()));
+                      if (formKey.currentState!.validate()) {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => Homepage()));
+                      }
                     },
 
                     style: ElevatedButton.styleFrom(
