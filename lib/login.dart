@@ -11,6 +11,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
+  bool isPasswordVisible = false;
   //final namekey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -123,7 +124,8 @@ class _LoginState extends State<Login> {
                       SizedBox(height: 15),
 
                        TextFormField(
-                          obscureText: true,
+                         //controller: passwordController,
+                         obscureText: !isPasswordVisible,
                           validator: (value){
                             if (value == null || value.isEmpty){
                               return "Enter a valid Input";
@@ -141,6 +143,15 @@ class _LoginState extends State<Login> {
                               Icons.lock_outline,
                               color: Color(0xFF506142),
                             ),
+                            suffixIcon: IconButton(onPressed: (){
+                              setState(() {
+                                isPasswordVisible = !isPasswordVisible;
+                              });
+                            },
+                                icon: Icon(
+                                    isPasswordVisible ? Icons.visibility : Icons.visibility_off
+                                )
+                            ) ,
                             hintText: "Password",
                             filled: true,
                             fillColor: Color(0xFFEDECDA),
